@@ -4,9 +4,42 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: sans-serif;
+    padding: 30px;
+    font-size: 18px;
+}
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+section#login {
+    margin: 40px 0;
+}
 input, button {
     display: block;
     margin-bottom: 4px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    width: 100%;
+}
+input[type='text'], input[type='password'] {
+    border: none;
+    background-color: #f3f2f7;
+}
+::placeholder {
+    color: #999;
+}
+button {
+    color: white;
+    background: #fdb7b7;
+    border: none;
+}
+button.secondary {
+    background: #44355B;
+}
+#login_button {
+    margin-top: 20px;
 }
 .accent {
     color: #fdb7b7;
