@@ -1,21 +1,191 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pinkie Promise</title>
+        <title>Pinky Promise</title>
         <link rel="stylesheet" href="style.css">
         <link rel="manifest" href="manifest.json">
     </head>
     <body>
-        <h1>Pinkie<span class="accent">Promise</span></h1>
+
+        <h1>Pinky<span class="accent">Promise</span></h1>
+
         <section id="login">
             <input name="email" type="text" placeholder="Email">
             <input name="password" type="password" placeholder="Password">
             <button id="login_button">Log in</button>
             <button class="secondary">Register</button>
         </section>
+
         <section id="intro" class="hidden">
-            <p>Welcome to Pinkie Promise</p>
+            <p>Welcome to Pinky Promise, the Mutual Non-Disclosure Agreement (NDA) app tailored for everyday relationships and interactions.</p>
+            <p>In today’s connected world, your words and ideas are as precious as ever. Whether your brainstorming a new business, sharing personal stories, or discussing personal information, Pinky Promise helps you secure peace of mind by facilitating easy and enforceable mutual NDAs.</p>
+            <p>Our platform is designed to protect the confidentiality of your discussions, ensuring that trust is built right from the start. Join us and embrace the confidence to share freely, knowing your information is protected. Let’s make every conversation a promise kept.</p>
+            <button id="questionnaire_button">Begin questionnaire</button>
         </section>
+
+        <section id="questionnaire" class="hidden">
+
+            <h2>QUESTIONNAIRE</h2>
+
+            <p>Welcome to the Pinky Promise NDA customization survey!</p>
+            <p>As part of our commitment to craft NDAs that fit your specific needs, this survey is designed to understand the provisions you and all others involved in the NDA deem necessary.</p>
+            <p>Each party invited to this NDA will have the opportunity to fill out this survey. Based on the responses, the agreed-upon terms will be automatically written into your NDA. For any items that do not reach consensus, each party will be notified for negotiation purposes.</p>
+            <p> No NDA will be created without consensus on all elements, ensuring that everything you sign is something you agreed to!</p>
+
+            <!-- Information Type -->
+            <h2>What kind of information do you want to keep just between us?</h2>
+            <div>
+                <input type="checkbox" id="personalSecretsInfoType" name="informationType">
+                <label for="personalSecretsInfoType">Personal secrets</label>
+            </div>
+            <div>
+                <input type="checkbox" id="photosVideosInfoType" name="informationType">
+                <label for="personalSecretsInfoType">Photos and videos shared</label>
+            </div>
+            <div>
+                <input type="checkbox" id="contactInfoType" name="informationType">
+                <label for="contactInfoType">Personal contact information</label>
+            </div>
+            <div>
+                <input type="checkbox" id="conversationDetailsInfoType" name="informationType">
+                <label for="conversationDetailsInfoType">Details of our conversations</label>
+            </div>
+            <div>
+                <input type="checkbox" id="otherSecretInfoType" name="informationType" onchange="toggleOtherInput()">
+                <label for="otherSecretInfoType">Other (please specify)</label>
+                <input type="text" id="otherSecretInput" class="hidden">
+            </div>
+
+            <!-- Duration -->
+            <h2>How long do you want our information to stay private?</h2>
+            <div>
+                <input type="radio" id="agreeRelease" name="durationOptions" value="agreeRelease">
+                <label for="agreeRelease">Until we both agree to release it 
+                    <a href="/how-to-agree-release">(Learn more)</a>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="tillDeath" name="durationOptions" value="tillDeath">
+                <label for="tillDeath">Till death do us part (when one of us dies)</label>
+            </div>
+            <div>
+                <input type="radio" id="notEvenDeath" name="durationOptions" value="notEvenDeath">
+                <label for="notEvenDeath">Not even death can part these lips (Indefinitely)</label>
+            </div>
+            <div>
+                <input type="radio" id="publiclyKnown" name="durationOptions" value="publiclyKnown">
+                <label for="publiclyKnown">Until the information becomes publicly known by other means</label>
+            </div>
+            <div>
+                <input type="radio" id="specificTime" name="durationOptions" value="specificTime">
+                <label for="specificTime">A specific time period after our interaction ends (please specify)</label>
+                <input type="text" id="timePeriod" class="hidden" placeholder="Enter time period">
+            </div>
+
+            <!-- Permissible Sharing -->
+            <h2>Are there any situations where it's okay to share some details?</h2>
+            <div>
+                <input type="checkbox" id="legalIssue" name="shareSituations">
+                <label for="legalIssue">In case of a legal issue</label>
+            </div>
+            <div>
+                <input type="checkbox" id="safetyConcern" name="shareSituations">
+                <label for="safetyConcern">In case of a safety concern to self or others</label>
+            </div>
+            <div>
+                <input type="checkbox" id="mutualConsent" name="shareSituations">
+                <label for="mutualConsent">With mutual consent in a written agreement (which you can draft here!)</label>
+            </div>
+            <div>
+                <input type="checkbox" id="withProfessionals" name="shareSituations">
+                <label for="withProfessionals">With professionals (like therapists) bound by confidentiality</label>
+            </div>
+            <div>
+                <input type="checkbox" id="neverShare" name="shareSituations">
+                <label for="neverShare">Never</label>
+            </div>
+
+            <!-- Enforcement -->
+            <h2>What feels like a fair response if our privacy agreement is broken?</h2>
+            <input type="text" id="fairResponseInput" placeholder="Type your response here">
+
+
+        </section>
+
+        <!-- Information Type Sections -->
+        <section id="personalSecretsInfoTypeSection" class="hidden">
+            <h3>Personal Secrets</h3>
+            <p>Any personal secrets shared between the parties will be kept confidential.</p>
+        </section>
+        <section id="photosVideosInfoTypeSection" class="hidden">
+            <h3>Photos and Videos</h3>
+            <p>All photos and videos shared during the term of this agreement are considered confidential.</p>
+        </section>
+        <section id="contactInfoTypeSection" class="hidden">
+            <h3>Contact Information</h3>
+            <p>Personal contact information such as phone numbers, email addresses, and physical addresses will not be disclosed to third parties.</p>
+        </section>
+        <section id="conversationDetailsInfoTypeSection" class="hidden">
+            <h3>Conversation Details</h3>
+            <p>Details of all conversations held under this agreement will remain strictly confidential.</p>
+        </section>
+        <section id="otherSecretInfoTypeSection" class="hidden">
+            <h3>Other Confidential Information</h3>
+            <p>The following additional secrets will be kept confidential: <span id="otherDetails"></span></p>
+        </section>
+
+        <!-- Duration Sections -->
+        <section id="agreeReleaseSection" class="hidden durationSection">
+            <h3>Agreed Release of Information</h3>
+            <p>This confidentiality agreement remains in effect until both parties agree to release each other from this commitment through a mutually executed written agreement.</p>
+        </section>
+        <section id="tillDeathSection" class="hidden durationSection">
+            <h3>Duration Until Death</h3>
+            <p>The information disclosed under this agreement shall remain confidential until the death of the disclosing party.</p>
+        </section>
+        <section id="notEvenDeathSection" class="hidden durationSection">
+            <h3>Indefinite Confidentiality</h3>
+            <p>This confidentiality agreement shall persist indefinitely, beyond the death of either party, safeguarding the disclosed information forever.</p>
+        </section>
+        <section id="publiclyKnownSection" class="hidden durationSection">
+            <h3>Public Domain Release</h3>
+            <p>Confidentiality under this agreement will cease once the disclosed information enters the public domain through no fault of the receiving party.</p>
+        </section>
+        <section id="specificTimeSection" class="hidden durationSection">
+            <h3>Specific Time Period</h3>
+            <p>The confidentiality obligations under this agreement shall last for <span id="dynamicTimePeriod">[specify period]</span> following the termination of their interaction.</p>
+        </section>
+
+        <!-- Permissible Sharing Sections -->
+
+        <section id="legalIssueSection" class="hidden">
+            <h3>In Case of a Legal Issue</h3>
+            <p>Information may be disclosed if required by law or in response to a valid order of a court or other governmental body.</p>
+        </section>
+        <section id="safetyConcernSection" class="hidden">
+            <h3>In Case of a Safety Concern</h3>
+            <p>Information may be disclosed if it is deemed necessary to protect the safety of the individual or others.</p>
+        </section>
+        <section id="mutualConsentSection" class="hidden">
+            <h3>With Mutual Consent</h3>
+            <p>Information may be shared if all parties involved agree in writing to the sharing of specific details under agreed terms.</p>
+        </section>
+        <section id="withProfessionalsSection" class="hidden">
+            <h3>With Professionals Bound by Confidentiality</h3>
+            <p>Information may be shared with professionals such as therapists or lawyers who are legally bound to keep the information confidential.</p>
+        </section>
+        <section id="neverShareSection" class="hidden">
+            <h3>Never Share</h3>
+            <p>No information will be disclosed under any circumstances, ensuring complete confidentiality.</p>
+        </section>
+
+        <!-- Enforcement Section -->
+        <section id="fairResponseSection" class="hidden">
+            <h3>Proposed Fair Response to Privacy Breach</h3>
+            <p>Response: <span id="fairResponseDisplay"></span></p>
+        </section>
+
         <script src="scripts.js"></script>
+
     </body>
 </html>
